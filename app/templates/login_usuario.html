@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/forms.css') }}"> 
+    <div class="bg-secondary">
+    
+    <h1 class="display-3 text-center" style="padding-top: 3%;padding-bottom: 2%;">Login Cliente</h1>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+        <div class="fadeIn first">
+            <img src="{{ url_for('static', filename='img/logo.png') }}"id="icon" alt="icone logo">
+        </div>
+
+        <!-- Login Form -->
+        <form action="/logar_usuario" method=post>
+            {% if erros %}
+             <br>
+                <p><strong>ERRO: {{ erros }}</strong></p>
+            {% endif %}
+            <br>
+            <h6>{{ form.nome_usuario.label }}</h6>
+            {{ form.nome_usuario(class="fadeIn second",id="login",placeholder="Nome de usuário") }}
+            <h6>{{ form.senha.label }}</h6>
+            {{ form.senha(class="fadeIn third",id="password",placeholder="Senha") }}
+            {{ form.login(class="fadeIn fourth") }}
+            <!--<input type="text" id="login" class="fadeIn second" name="login" placeholder="login">-->
+            <!--<input type="text" id="password" class="fadeIn third" name="login" placeholder="password">-->
+            <!--<input type="submit" class="fadeIn fourth" value="Log In">-->
+        </form>
+
+            
+
+        </div>
+        </div>
+    </div>
+        <!--
+            <form action="/logar_usuario" method=post>
+            {% if erros %}
+                <p><strong>ERRO: {{ erros }}</strong></p>
+            {% endif %}
+
+            {{ form.nome_usuario.label }}
+            {{ form.nome_usuario }}
+            <br><br>
+            {{ form.senha.label }}
+            {{ form.senha }}
+            <br><br>
+            {{ form.login }}
+        </form>
+        -->
+
+{% endblock main %}

@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <h1 class="display-3 text-center" style="padding-top: 3%;padding-bottom: 3%">Quartos</h1>
+    <div class="container" style="padding-bottom: 7%;">
+    {% if quartos|length < 1 %}
+        <h3 class="text-center">Nenhum quarto foi criado</h3>
+    {% else %}
+        
+        
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Número</th>
+                <th scope="col">Horário</th>
+                <th scope="col">Limite por dia</th>
+                <th scope="col">Portes suportados</th>
+                <th scope="col">Preço por hora</th>
+                <th scope="col">Nota média</th>
+                <th scope="col">Hospedagens</th>
+                <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for quarto in quartos %}
+                <tr>
+                    <td scope="row">{{ quarto.numero }}</td>
+                    <td scope="row">{{ quarto.horario_inicio }}—{{ quarto.horario_fim }}</td>
+                    <td scope="row">{{ quarto.limite_cachorros }}</td>
+                    <td scope="row">Pequeno:{{ quarto.suporta_pequeno }}<br>
+                        Médio: {{ quarto.suporta_medio }} <br>
+                        Grande: {{ quarto.suporta_grande }}</td>
+                    <td scope="row">{{ quarto.preco_hora }}</td>
+                    <td scope="row">{{ quarto.nota_media }}</td>
+                    <td scope="row">{{ quarto.quant_hospedagem }}</td>
+                    <td scope="row">
+                        <a href="{{ url_for('agendar',numero=quarto.numero) }}">Agendar Hospedagem</a>
+                        {% if current_user.isAdmin  %}
+                        <br>
+                        <a href="{{ url_for('deletar_quarto',numero=quarto.numero) }}">Deletar Quarto</a>
+                        <br>
+                        <a href="{{ url_for('modificar_quarto',numero=quarto.numero) }}">Modificar Quarto</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    
+    </div>
+    {% endif %}
+{% endblock main %}
+
+<!--
+    numero = db.Column(db.Integer,nullable=False,primary_key=True)
+    limite_cachorros = db.Column(db.Integer,nullable=False)
+    horario_inicio = db.Column(db.Time,nullable=False)
+    horario_fim = db.Column(db.Time,nullable=False)
+    preco_hora = db.Column(db.DECIMAL,nullable=False)
+    nota_media = db.Column(db.DECIMAL,default=0.0)
+    quant_hospedagem = db.Column(db.Integer,default=0)
+    suporta_pequeno = db.Column(db.Boolean)
+    suporta_medio = db.Column(db.Boolean)
+    suporta_grande = db.Column(db.Boolean)
+-->

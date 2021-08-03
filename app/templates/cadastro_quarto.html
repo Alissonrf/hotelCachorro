@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/forms.css') }}"> 
+    <div class="bg-secondary">
+        <h1 class="display-3 text-center" style="padding-top: 3%;padding-bottom: 2%;">Cadastrar Quarto</h1>
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <div class="fadeIn first">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}"id="icon" alt="icone logo">
+                </div>
+                <br><br>
+                <form action="/cadastrar_quarto" method= post >
+                    {{form.hidden_tag()}}
+                    <h6 class="fadeIn second">{{ form.num_quarto.label }}</h6>
+                    {{ form.num_quarto(class="fadeIn second",placeholder="Número do quarto") }}
+                    
+                    <h6 class="fadeIn third">{{ form.limite_cachorros.label }}</h6>
+                    {{ form.limite_cachorros(class="fadeIn third",placeholder="Limite diário de cachorros") }}
+                    <br><br><br>
+                    <h6 class="fadeIn third">{{ form.horario_inicial_funcionamento.label }}</h6>
+                    {{ form.horario_inicial_funcionamento(class="fadeIn third") }}
+                    <br><br><br>
+                    <h6 class="fadeIn third">{{ form.horario_final_funcionamento.label }}</h6>
+                    {{ form.horario_final_funcionamento(class="fadeIn third") }}
+                    <br><br><br>
+                    <h6 class="fadeIn third">{{ form.preco_hora.label }}</h6>
+                    {{ form.preco_hora(class="fadeIn third",placeholder="Preço por hora") }}
+                    <br><br>
+                    <h6 class="fadeIn fourth">{{ form.porte_pequeno.label }}</h6>
+                    {{ form.porte_pequeno(class="fadeIn fourth") }}
+                    <br><br>
+                    <h6 class="fadeIn fourth">{{ form.porte_medio.label }}</h6>
+                    {{ form.porte_medio(class="fadeIn fourth") }}
+                    <br><br>
+                    <h6 class="fadeIn fourth">{{ form.porte_grande.label }}</h6>
+                    {{ form.porte_grande(class="fadeIn fourth") }}
+                    <br><br>
+                    {{ form.criar(class="fadeIn fourth") }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock main %}
+
+<!--
+
+<link rel="stylesheet" href="{{ url_for('static',filename='css/forms.css') }}"> 
+    <div class="bg-secondary">
+    
+    <h1 class="display-3 text-center" style="padding-top: 3%;padding-bottom: 2%;">Login Cliente</h1>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+        
+        <div class="fadeIn first">
+                <img src="{{ url_for('static', filename='img/logo.png') }}"id="icon" alt="icone logo">
+            </div>
+    
+            
+            <form action="/logar_usuario" method=post>
+                {% if erros %}
+                 <br>
+                    <p><strong>ERRO: {{ erros }}</strong></p>
+                {% endif %}
+                <br>
+                <h6>{{ form.nome_usuario.label }}</h6>
+                {{ form.nome_usuario(class="fadeIn second",id="login",placeholder="Nome de usuário") }}
+                <h6>{{ form.senha.label }}</h6>
+                {{ form.senha(class="fadeIn third",id="password",placeholder="Senha") }}
+                {{ form.login(class="fadeIn fourth") }}
+            </form>
+    
+                
+    
+            </div>
+            </div>
+        </div>
+
+
+-->

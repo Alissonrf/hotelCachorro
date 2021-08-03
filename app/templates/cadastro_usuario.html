@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/forms.css') }}"> 
+    <div class="bg-secondary">
+        <div class="wrapper fadeInDown">
+            <h1 class="display-3 text-center" style="padding-top: 3%;padding-bottom: 2%; ">Cadastrar Usuário</h1>
+                <div id="formContent">
+                    <div class="fadeIn first">
+                        <img src="{{ url_for('static', filename='img/logo.png') }}"id="icon" alt="icone logo">
+                    </div>
+                    <br><br>
+                    <form action="/cadastrar_usuario" method= post >
+                        {{form.hidden_tag()}}
+                        <h6 class="fadeIn second">{{ form.nome.label }}</h6>
+                        {{ form.nome(class="fadeIn second",placeholder="Nome completo") }}
+                        
+                        <h6 class="fadeIn second">{{ form.nome_usuario.label }}</h6>
+                        {{ form.nome_usuario(class="fadeIn second",placeholder="Nome de usuário") }}
+                        
+                        <h6 class="fadeIn third">{{ form.cpf.label }}</h6>
+                        {{ form.cpf(class="fadeIn third",placeholder="CPF válido") }}
+                        
+                        <h6 class="fadeIn third">{{ form.data_nasc.label }}</h6>
+                        {{ form.data_nasc(class="fadeIn third") }}
+                        
+                        <h6 class="fadeIn third">{{ form.email.label }}</h6>
+                        {{ form.email(class="fadeIn third",placeholder="E-mail") }}
+                        
+                        <h6 class="fadeIn fourth">{{ form.senha.label }}</h6>
+                        {{ form.senha(class="fadeIn fourth",placeholder="Senha") }}
+                        
+                        <h6 class="fadeIn fourth">{{ form.confirm_senha.label }}</h6>
+                        {{ form.confirm_senha(class="fadeIn fourth",placeholder="Confirmação de senha") }}
+                        
+                        <h6 class="fadeIn fourth">{{ form.telefone.label }}</h6>
+                        {{ form.telefone(class="fadeIn fourth",placeholder="Telefone") }}
+                        
+                        {{ form.cadastrar(class="fadeIn fourth") }}
+                    </form>
+                </div>
+        </div>
+    </div>
+{% endblock%}
+
+<!--
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/forms.css') }}"> 
+    <div class="bg-secondary">
+    
+    <h1 class="display-3 text-center" style="padding-top: 3%;padding-bottom: 2%;">Login Cliente</h1>
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+        
+        <div class="fadeIn first">
+                <img src="{{ url_for('static', filename='img/logo.png') }}"id="icon" alt="icone logo">
+            </div>
+    
+            
+            <form action="/logar_usuario" method=post>
+                {% if erros %}
+                 <br>
+                    <p><strong>ERRO: {{ erros }}</strong></p>
+                {% endif %}
+                <br>
+                <h6>{{ form.nome_usuario.label }}</h6>
+                {{ form.nome_usuario(class="fadeIn second",id="login",placeholder="Nome de usuário") }}
+                <h6>{{ form.senha.label }}</h6>
+                {{ form.senha(class="fadeIn third",id="password",placeholder="Senha") }}
+                {{ form.login(class="fadeIn fourth") }}
+            </form>
+    
+                
+    
+            </div>
+            </div>
+        </div>
+
+-->

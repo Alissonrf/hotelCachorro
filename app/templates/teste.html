@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <h1>Dog Hotel</h1>
+    <ul>
+        <li>
+            <a href="{{ url_for('cadastrar_usuario') }}">Cadastrar Usuário</a>
+        </li>
+        <li>
+            <a href="{{ url_for('logar_usuario') }}">Logar Usuário</a>
+        </li>
+        {% if current_user.is_authenticated %}
+            <li>
+                <a href="{{ url_for('perfil_usuario') }}">Perfil Usuário</a>
+            </li>
+            <li>
+                <a href="{{ url_for('cadastrar_cachorro') }}">Cadastrar Cachorro</a>
+            </li>
+            <li>
+                <a href="{{ url_for('quartos') }}">Lista de quartos</a>
+            </li>
+            <li>
+                <a href="{{ url_for('agendamentos') }}">Lista de agendamentos</a>
+            </li>
+            {% if not current_user.isAdmin %}
+                <li>
+                    <a href="{{ url_for('modo_admin') }}">Tornar-se um Administrador</a>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ url_for('logout_admin') }}">Sair do modo Administrador</a>
+                </li>
+                <li>
+                        <a href="{{ url_for('cadastrar_quarto') }}">Cadastrar quarto</a>
+                </li>
+                
+            {% endif %}
+            <li>
+                <a href="{{ url_for('logout_usuario') }}">Deslogar</a>
+            </li>
+        {% endif %}
+    </ul>
+{% endblock  %}
+

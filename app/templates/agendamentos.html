@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+    <h1 class="display-3 text-center" style="padding-top: 3%;padding-bottom: 3%">Meus Agendamentos</h1>
+    <div class="container" style="padding-bottom: 7%;">
+    {% if agendamentos|length < 1 %}
+        <h3 class="text-center">Nenhum Agendamento for realizado</h3>
+    {% else %}
+        
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th>Número Quarto</th>
+                <th>Data</th>
+                <th>Horário</th>
+                <th>Cachorro</th>
+                <th>Preço total</th>
+                <th>Ações</th>
+            </tr>
+            </thead>    
+            <tbody>
+            {% for agendamento in agendamentos %}
+                <tr>
+                    <td>{{ agendamento.num_quarto }}</td>
+                    <td>{{ agendamento.data }}</td>
+                    <td>{{ agendamento.horario_inicio }}—{{ agendamento.horario_fim }}</td>
+                    <td>{{ cachorro.query.filter_by(id=agendamento.id_cachorro).first().nome }}</td>
+                    <td>{{ agendamento.preco_total }}</td>
+                    <td>
+                        <a href="{{ url_for('deletar_agendamento',id=agendamento.id) }}">Deletar agendamento</a>
+                        {% if agendamento.permissao_avaliar %}
+                        <br>
+                        <a href="{{ url_for('avaliar_hospedagem',id=agendamento.id) }}">Avaliar hospedagem</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+{% endblock main %}
+
+<!--
+    id = db.Column(db.String,primary_key=True)
+    horario_inicio = db.Column(db.Time,nullable=False)
+    horario_fim = db.Column(db.Time,nullable=False)
+    id_cachorro = db.Column(db.String,db.ForeignKey('cachorro.id'),nullable=False) 
+    num_quarto = db.Column(db.Integer,db.ForeignKey('quarto.numero'),nullable=False)
+    preco_total = db.Column(db.Float)
+
+    data = DateField("Data da hospedagem", validators= [DataRequired()],format='%Y-%m-%d')
+    horario_inicio = TimeField("Inicio da hospedagem",[DataRequired()])
+    horario_fim = TimeField("Fim da hospedagem",[DataRequired()])
+    cachorro = QuerySelectField("Selecione um cachorro",validators=[DataRequired()],get_label="nome",allow_blank=False)
+    agendar = SubmitField("Agendar Hospedagem")
+    calcular_preco = SubmitField("Calcular preço hospedagem"))
+
+-->

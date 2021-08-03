@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/forms.css') }}"> 
+    <div class="bg-secondary">
+        <h1 class="display-3 text-center" style="padding-top: 3%;padding-bottom: 2%;">Modificar cachorro</h1>
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <div class="fadeIn first">
+                        <img src="{{ url_for('static', filename='img/logo.png') }}"id="icon" alt="icone logo">
+                </div>
+                <br><br>
+                <form action="/modificar_cachorro/{{ cachorro.id }}" method= post >
+                    {{form.hidden_tag()}}
+                    <h6 class="fadeIn second">{{ form.nome.label }}</h6>
+                    {{ form.nome(class="fadeIn second",placeholder="Nome") }}
+                    
+                    <h6 class="fadeIn third">{{ form.idade.label }}</h6>
+                    {{ form.idade(class="fadeIn third",placeholder="Idade") }}
+                    
+                    <h6 class="fadeIn third">{{ form.raca.label }}</h6>
+                    {{ form.raca(class="fadeIn third",placeholder="Raça") }}
+                    
+                    <h6 class="fadeIn fourth">{{ form.porte.label }}</h6>
+                    {{ form.porte(class="fadeIn fourth") }}
+                    
+                    {{ form.cadastrar_cachorro(class="fadeIn fourth") }}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock%}
+
+<!--
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/forms.css') }}"> 
+    <div class="bg-secondary">
+        <h1 class="display-3 text-center" style="padding-top: 3%;padding-bottom: 2%;">Agendar hospedagem</h1>
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <div class="fadeIn first">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}"id="icon" alt="icone logo">
+                </div>
+                <br><br>
+                {% if erro %}
+                    <p>ERRO: {{ erro }}</p>
+                {% endif %}
+                {% if preco %}
+                    <p>Preço da hospedagem: {{ preco }}</p>
+                {% endif %}
+                <form action="/agendar/{{ quarto.numero }}" method= post >
+                    {{form.hidden_tag()}}
+                    <h6 class="fadeIn second">{{ form.data.label }}</h6>
+                    {{ form.data(class="fadeIn second") }}
+                    <br><br>
+                    <h6 class="fadeIn third">{{ form.horario_inicio.label }}</h6>
+                    {{ form.horario_inicio(class="fadeIn third") }}
+                    <br><br>
+                    <h6 class="fadeIn third">{{ form.horario_fim.label }}</h6>
+                    {{ form.horario_fim(class="fadeIn third") }}
+                    <br><br>
+                    
+                    <h6 class="fadeIn fourth">{{ form.cachorro.label }}</h6>
+                    {{ form.cachorro(class="fadeIn fourth") }}
+                    <br><br>
+                    {{ form.agendar(class="fadeIn fourth") }}
+                    {{ form.calcular_preco(class="fadeIn fourth") }}
+                </form>
+            </div>
+        </div>
+    </div>
+-->

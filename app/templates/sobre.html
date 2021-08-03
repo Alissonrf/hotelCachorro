@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+
+
+{% block main %}
+<br><br>
+		<div class="container">
+            <div class="row">
+                
+                <div class="col-sm-12" >
+                    <h1 class="display-2">Sobre</h1><br>
+                        <h3>O hotel</h3>
+                            <p class="text-body text-justify" style="padding: 1.5%">
+                                O <strong>Dog Hotel</strong> é um site que visa entregar uma solução para seu <i>"AUmigo"</i>, 
+                                porque acreditamos que ele merece atenção e carinho mesmo quando seu dono não pode estar presente. Dessa forma, é 
+                                nossa missão facilitar seus agendamentos sem que você precise ligar para o hotel para isso.
+                            </p>
+                            
+                            <div class="text-center">
+                                <img src="{{ url_for('static', filename='img/cachorro_dormindo.png') }}" alt="cachorro_dormindo">
+                            </div>
+                            
+
+                            <p class="text-body text-justify" style="padding: 1.5%">
+                                Aqui nós temos quartos dedicados para o tamanho do seu cão, seja ele pequeno, médio ou grande, havendo inclusive opções de quartos mistos.
+                                Além disso, proporcionamos uma gama extensa de preços que cabem dentro do seu bolso e de sua expectativa.
+                            </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+        
+                <h3>O projeto</h3>
+                    <p class="text-body text-justify" style="padding: 1.5%">
+                        Desde sua criação, em 2019, o Dog Hotel se tornou muito mais do que apenas um trabalho de 
+                        programação e engenharia de software, ele se tornou uma conquista para todos os membros da 
+                        equipe, que estão orgulhosos de terem convertido seus conhecimentos em algo funcional.
+                    </p>
+                    <p class="text-body text-justify" style="padding: 1.5%">
+                        Sentimos que estamos mais preparados para enfrentar futuros sites sabendo que podemos aplicar
+                        nossa lógica e compreensão em python, naquilo que vinhamos aprendendo desde o ano passado com
+                        a disciplina de desenvolvimento web. 
+                    </p>
+                    <p class="text-body text-justify" style="padding: 1.5%">
+                        Percebemos também que planejar o sistema antes de desenvolve-lo nos ajudou a simplificar o
+                        processo de criação do código e que dessa forma, boa parte das matérias do técnico estão
+                        de alguma forma interagindo mais do que nunca entre si.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                        <h3>Os integrantes</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                <!--<div class="col-sm-10">
+                    <h3>Os integrantes</h3>
+                </div>
+                -->
+                
+                <div class="col-md-3">
+                    <div class="card mb-4 box-shadow">
+                        <img class="card-img-top" style="height:21rem; width: 100%; display: block;" src="{{ url_for('static', filename='img/alisson.jpg') }}"  alt="alisson">
+                        <div class="card-body">
+                        <p class="card-text">Alisson Flores</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" style="height: 21rem; width: 100%; display: block;" src="{{ url_for('static', filename='img/manuela.jpg') }}"  alt="manu">
+                            <div class="card-body">
+                            <p class="card-text">Manuela Weidmann</p>
+                            </div>
+                        </div>
+                    </div>
+                <div class="col-md-3">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" style="height: 21rem; width: 100%; display: block;" src="{{ url_for('static', filename='img/kauan.jpg') }}"  alt="kauan">
+                            <div class="card-body">
+                            <p class="card-text">Kauan Elias</p>
+                            </div>
+                        </div>
+                </div>
+                <div class="col-md-3">
+                        <div class="card mb-4 box-shadow">
+                            <img class="card-img-top" style="height: 21rem; width: 100%; display: block;" src="{{ url_for('static', filename='img/vitor.jpg') }}"  alt="vitor">
+                            <div class="card-body">
+                            <p class="card-text">Vítor Otto</p>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            </div>
+{% endblock main %}

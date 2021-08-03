@@ -1,0 +1,51 @@
+<!--
+    /teste
+
+    <li>
+        <a href="{{ url_for('agendamento') }}">Agendar hospedagem</a>
+    </li>
+-->
+
+
+<!--
+    /quartos
+
+    <a href="{{ url_for('agendamento') }}">Agendar Hospedagem</a>
+    {% if current_user.isAdmin  %}
+        <a href="{{ url_for('deletar_quarto') }}">Deletar Quarto</a>
+    {% endif %}
+    pode ter mais nesse mesmo td
+-->
+
+<!--
+
+    /modificar_agendamento
+
+    {% extends 'base.html' %}
+
+    {% block main %}
+        <h1>Modificar Agendamento</h1>
+        <form action="/modificar_agendamento/{{ agendamento.id }}" method= post >
+            {{form.hidden_tag()}}
+            {{ form.data.label }}
+            {{ form.data }}
+            <br><br>
+            {{ form.horario_inicio.label }}
+            {{ form.horario_inicio }}
+            <br><br>
+            {{ form.horario_fim.label }}
+            {{ form.horario_fim }}
+            <br><br>
+            {{ form.agendar }}
+            {{ form.calcular_preco }}
+        </form>
+
+    {% endblock main %}
+-->
+
+<!--
+    /avaliar_hospedagem
+        <br><br>
+        {{ form.comentario.label }}
+        {{ form.comentario }}
+-->

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block main %}
+        <h1 class="display-3 text-center" style="padding-top: 3%;padding-bottom: 3%">Perfil</h1>
+        <div class="container" style="padding-bottom: 7%;">
+        <h2 class="text-center">Usuário: {{ current_user.nome }}</h2> <br>
+        <br><br>
+        {% if cachorros|length < 1 %}
+        
+            <h3 class="text-center">Nenhum cachorro foi cadastrado</h3>
+        {% else %}
+        <h2>Cachorros:</h2>
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <!--<th>ID</th>-->
+                    <th>Nome</th>
+                    <th>Idade</th>
+                    <th>Raça</th>
+                    <th>Porte</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cachorro in cachorros %}
+                
+                    <tr>
+                        <!--<td>{{ cachorro.id }}</td>-->
+                        <td>{{ cachorro.nome }}</td>
+                        <td>{{ cachorro.idade }}</td>
+                        <td>{{ cachorro.raca }}</td>
+                        <td>{{ cachorro.porte }}</td>
+                        <td>
+                            <a href="{{ url_for('deletar_cachorro',id=cachorro.id) }}">Deletar Cachorro</a>
+                            <br>
+                            <a href="{{ url_for('modificar_cachorro',id=cachorro.id) }}">Modificar Cachorro</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock main %} 

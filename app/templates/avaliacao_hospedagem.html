@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/forms.css') }}"> 
+    <div class="bg-secondary">
+        <h1 class="display-3 text-center" style="padding-top: 3%;padding-bottom: 2%;">Avaliação de hospedagem</h1>
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <div class="fadeIn first">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}"id="icon" alt="icone logo">
+                </div>
+                <br><br>
+                <form action="/avaliar_hospedagem/{{ agendamento.id }}" method= post >
+                    {{form.hidden_tag()}}
+                    <h6 class="fadeIn second">{{ form.nota.label }}</h6>
+                    {{ form.nota(class="fadeIn second", placeholder="Nota de 0 a 5") }}
+                    {{ form.enviar(class="fadeIn third") }}
+                </form>
+            </div>
+    </div>
+{% endblock main %}
+
+
+<!--
+    
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/forms.css') }}"> 
+    <div class="bg-secondary">
+        
+        <h1 class="display-3 text-center" style="padding-top: 3%;padding-bottom: 2%; ">Entrar como administrador</h1>
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <div class="fadeIn first">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}"id="icon" alt="icone logo">
+                </div>
+                <br><br>
+                <form action="/modo_admin" method=post>
+                {% if erros %}
+                    <p><strong>ERRO: {{ erros }}</strong></p>
+                {% endif %}
+                
+                <h6 class="fadeIn">{{ form.cod_acesso_segredo.label }}</h6>
+                {{ form.cod_acesso_segredo(class="fadeIn second") }}
+                <br><br>
+                {{ form.enviar(class="fadeIn third") }}
+                </form>
+            </div>
+        </div>  
+    </div>
+
+-->

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+    {% if title %}
+        <title>{{ title }} - Dog Hotel</title>
+    {% else %}
+        <title>Dog Hotel</title>
+    {% endif %}
+
+    <style type="text/css">
+		.linha_superior{
+			border-top: 2px solid #bdc3c7;
+		}
+    </style>
+    
+</head>
+<body>
+
+    <header>
+            {% block header %}
+                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                    <a class="navbar-brand" href="{{ url_for('index') }}">
+                        <img src="{{ url_for('static', filename='img/logo.png')  }}" width="40" height="40" class="d-inline-block align-top" class="d-inline-block align-top">
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <ul class="navbar-nav mr-auto">
+                            <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('index') }}">Home <span class="sr-only">(current)</span></a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('sobre') }}">Sobre</a>
+                            </li>
+                            
+                            {% if not current_user.is_authenticated %}
+        
+                            <div class="col-md-5">
+                            <li class="nav-item">
+                            <a class="nav-link btn btn-sm btn-secondary" href="{{ url_for('logar_usuario') }}">Iniciar sessão</a>
+                            </li>
+                            </div>
+                            <div class="col-md-5">
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-sm btn-outline-secondary" href="{{ url_for('cadastrar_usuario') }}">Cadastrar-se</a>
+                            </li>
+                            </div>
+                            
+                            {% else %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url_for('quartos') }}">Quartos</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url_for('perfil_usuario') }}">Perfil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url_for('cadastrar_cachorro') }}">Cadastrar cachorro</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ url_for('agendamentos') }}">Agendamenos</a>
+                                </li>
+                                
+                                {% if current_user.isAdmin %}
+                                    
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ url_for('cadastrar_quarto') }}">Cadastrar quarto</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ url_for('logout_admin') }}">Sair do modo Admin</a>
+                                    </li>
+                                {% else %}
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="{{ url_for('modo_admin') }}">Entrar como Admin</a>
+                                    </li>                        
+                                {% endif %}
+                                <li class="nav-item">
+                                    <a class="nav-link btn btn-sm btn-secondary" href="{{ url_for('logout_usuario') }}">Finalizar sessão</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </nav>
+            {% endblock %}
+    </header>
+    
+    
+    <main><br><br>{% block main %}{% endblock %}</main>
+
+    
+    <footer class="container-fluid text-center text-md-left">
+        {% block footer %}
+            <hr class="clearfix ">
+            <div class="container-fluid text-center text-md-left">
+
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <h5 class="text-uppercase text-center">Criadores</h5>
+                    <p class="text-justify font-weight-light text-center" style="padding-left: 5%; padding-right: 5%">O presente site foi criado nas disciplinas de programação I 
+                    e Engenharia de Software na sala 202 informática. A equipe de desenvolvimento
+                    do Dog Hotel é composta por <strong>Alisson Flores</strong>,
+                    <strong>Manuela Weidmann</strong>,<strong>Kauan Elias</strong> e <strong>Vítor Otto</strong>.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                        <div class="text-center">
+                                <img src="{{ url_for('static', filename='img/ifc_logo.png')  }}" alt="logo_ifc" class="img-fluid" style="max-width: 28%; height: auto;"class="mx-auto d-block">
+                        </div>
+                </div>
+            </div>
+                
+                <hr class="clearfix w-100 pb-3">
+
+            
+           
+            
+            <div class="footer-copyright text-center py-3">© 2019 Copyright:
+            <a href="http://blumenau.ifc.edu.br/">IFC campus Blumenau</a>
+            </div>
+
+        </footer>
+        <script src="{{ url_for('static',filename='js/jquery-3.1.1.slim.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/tether.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='js/bootstrap.min.js') }}"></script>
+            
+    {% endblock %}
+    
+</body>
+</html>

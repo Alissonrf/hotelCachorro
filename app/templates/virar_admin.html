@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/forms.css') }}"> 
+    <div class="bg-secondary">
+        
+        <h1 class="display-3 text-center" style="padding-top: 3%;padding-bottom: 2%; ">Entrar como administrador</h1>
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <div class="fadeIn first">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}"id="icon" alt="icone logo">
+                </div>
+                <br><br>
+                <form action="/modo_admin" method=post>
+                {% if erros %}
+                    <p><strong>ERRO: {{ erros }}</strong></p>
+                {% endif %}
+                
+                <h6 class="fadeIn second">{{ form.cod_acesso_segredo.label }}</h6>
+                {{ form.cod_acesso_segredo(class="fadeIn second") }}
+                <br><br>
+                {{ form.enviar(class="fadeIn third") }}
+                </form>
+            </div>
+        </div>  
+    </div>
+{% endblock main %}
+
+<!--
+
+<link rel="stylesheet" href="{{ url_for('static',filename='css/forms.css') }}"> 
+<div class="bg-secondary">
+
+<h1 class="display-3 text-center" style="padding-top: 3%;padding-bottom: 2%;">Login Cliente</h1>
+<div class="wrapper fadeInDown">
+<div id="formContent">
+
+<div class="fadeIn first">
+        <img src="{{ url_for('static', filename='img/logo.png') }}"id="icon" alt="icone logo">
+    </div>
+
+    
+    <form action="/logar_usuario" method=post>
+        {% if erros %}
+            <br>
+            <p><strong>ERRO: {{ erros }}</strong></p>
+        {% endif %}
+        <br>
+        <h6>{{ form.nome_usuario.label }}</h6>
+        {{ form.nome_usuario(class="fadeIn second",id="login",placeholder="Nome de usuário") }}
+        <h6>{{ form.senha.label }}</h6>
+        {{ form.senha(class="fadeIn third",id="password",placeholder="Senha") }}
+        {{ form.login(class="fadeIn fourth") }}
+    </form>
+
+        
+
+    </div>
+    </div>
+</div>
+
+-->

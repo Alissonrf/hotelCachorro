@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+<!--
+
+    data = DateField("Data da hospedagem", validators= [DataRequired()],format='%Y-%m-%d')
+    horario_inicio = TimeField("Inicio da hospedagem",[DataRequired()])
+    horario_fim = TimeField("Fim da hospedagem",[DataRequired()])
+    cachorro = QuerySelectField("Selecione um cachorro",query_factory=determinar_cachorro,validators=[DataRequired()])
+    agendar = SubmitField("Agendar Hospedagem") 
+
+-->
+
+{% block main %}
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/forms.css') }}"> 
+    <div class="bg-secondary">
+        <h1 class="display-3 text-center" style="padding-top: 3%;padding-bottom: 2%;">Agendar hospedagem</h1>
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <div class="fadeIn first">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}"id="icon" alt="icone logo">
+                </div>
+                <br><br>
+                {% if erro %}
+                    <p>ERRO: {{ erro }}</p>
+                {% endif %}
+                {% if preco %}
+                    <p>Preço da hospedagem: {{ preco }}</p>
+                {% endif %}
+                <form action="/agendar/{{ quarto.numero }}" method= post >
+                    {{form.hidden_tag()}}
+                    <h6 class="fadeIn second">{{ form.data.label }}</h6>
+                    {{ form.data(class="fadeIn second") }}
+                    <br><br>
+                    <h6 class="fadeIn third">{{ form.horario_inicio.label }}</h6>
+                    {{ form.horario_inicio(class="fadeIn third") }}
+                    <br><br>
+                    <h6 class="fadeIn third">{{ form.horario_fim.label }}</h6>
+                    {{ form.horario_fim(class="fadeIn third") }}
+                    <br><br>
+                    
+                    <h6 class="fadeIn fourth">{{ form.cachorro.label }}</h6>
+                    {{ form.cachorro(class="fadeIn fourth") }}
+                    <br><br>
+                    {{ form.agendar(class="fadeIn fourth") }}
+                    {{ form.calcular_preco(class="fadeIn fourth") }}
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock main %}
+
+
+<!--
+
+<link rel="stylesheet" href="{{ url_for('static',filename='css/forms.css') }}"> 
+<div class="bg-secondary">
+
+<h1 class="display-3 text-center" style="padding-top: 3%;padding-bottom: 2%;">Login Cliente</h1>
+<div class="wrapper fadeInDown">
+<div id="formContent">
+
+<div class="fadeIn first">
+        <img src="{{ url_for('static', filename='img/logo.png') }}"id="icon" alt="icone logo">
+    </div>
+
+    
+    <form action="/logar_usuario" method=post>
+        {% if erros %}
+            <br>
+            <p><strong>ERRO: {{ erros }}</strong></p>
+        {% endif %}
+        <br>
+        <h6>{{ form.nome_usuario.label }}</h6>
+        {{ form.nome_usuario(class="fadeIn second",id="login",placeholder="Nome de usuário") }}
+        <h6>{{ form.senha.label }}</h6>
+        {{ form.senha(class="fadeIn third",id="password",placeholder="Senha") }}
+        {{ form.login(class="fadeIn fourth") }}
+    </form>
+
+        
+
+    </div>
+    </div>
+</div>
+-->
